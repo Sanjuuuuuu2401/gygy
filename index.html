@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <style>
+      #navbar{
+        display:flex;
+        justify-content: space-between;
+      }
+      #user-form{
+        margin-left: 600px;
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <h3>News App</h3>
+      <h3>Sign-Up</h3>
+      <h3>
+        <a href="/worldNews.html">World News</a>
+      </h3>
+    </div>
+    <div id="user-form">
+      <!-- Profile Pic, (Id:- user_pic)
+Name, (Id:- user_name)
+Email, (Id:- user_email)
+country, (Id: user_country) >> Dropdown with options "India", "China", "Newzeland", "USA", "UK.  
+** Submit button will have Id:- "submit". -->
+
+<input type="text" placeholder="Profile Pic URL" id="user_pic">
+<br>
+<input type="text" placeholder="Name" id="user_name">
+<br>
+<input type="text" placeholder="E-Mail" id="user_email">
+<br>
+<select name="country" id="user_country">
+  <option value="" id = "count">Select Your Country</option>
+  <option  value="in">India</option>
+  <option  value="ch">China</option>
+  <option  value="nz">Newzeland</option>
+  <option  value="us">USA</option>
+  <option  value="uk">UK</option>
+</select>
+   <button id="submit" onclick="func()">Submit</button>
+    </div>
+  </body>
+</html>
+<script>
+
+
+function func(){
+
+  let userData = JSON.parse(localStorage.getItem("user")) || []
+
+  let obj = {
+    name:document.getElementById("user_name").value,
+    image:document.getElementById("user_pic").value,
+    email:document.getElementById("user_email").value,
+    country:document.getElementById("count").value
+  }
+
+  userData.push(obj)
+
+  localStorage.setItem("user",JSON.stringify(userData))
+}
+</script>
