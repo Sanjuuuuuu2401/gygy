@@ -38,10 +38,10 @@ country, (Id: user_country) >> Dropdown with options "India", "China", "Newzelan
 <input type="text" placeholder="E-Mail" id="user_email">
 <br>
 <select name="country" id="user_country">
-  <option value="" id = "count">Select Your Country</option>
+  <option value="" >Select Your Country</option>
   <option  value="in">India</option>
   <option  value="ch">China</option>
-  <option  value="nz">Newzeland</option>
+  <option  value="nz">Newzealand</option>
   <option  value="us">USA</option>
   <option  value="uk">UK</option>
 </select>
@@ -60,7 +60,7 @@ function func(){
     name:document.getElementById("user_name").value,
     image:document.getElementById("user_pic").value,
     email:document.getElementById("user_email").value,
-    country:document.getElementById("count").value
+    country:document.getElementById("user_country").value
   }
 
   userData.push(obj)

@@ -4,7 +4,7 @@
 
 
 
-
+var userData=JSON.parse(localStorage.getItem("user")) ||[]
 
 for(let i=0;i<userData.length;i++){
 
@@ -14,17 +14,17 @@ for(let i=0;i<userData.length;i++){
 
 
 
-const url=`https://masai-mock-api.herokuapp.com/news/top-headlines?country=${s}`
 
 // console.log(s)
 let game=async()=>{
     let s=document.getElementById("country").value
+    let url=`https://masai-mock-api.herokuapp.com/news/top-headlines?country=${s}`
 
     let res=await fetch(url)
 let data=await res.json()
 
-
-appendI(data.articles)
+console.log(data.articles)
+append(data.articles)
 // console.log(data.articles)
 
 
@@ -33,7 +33,7 @@ appendI(data.articles)
 game()
 
 
- let appendI=(data)=>{
+ let append=(data)=>{
 
 
     data.forEach(function(ele){
@@ -73,19 +73,19 @@ game()
 
 
 
-var container=document.getElementById("sidebar");
-
-let display=(data)=>{
-    container.innerHTML=null;
-
-data.forEach(function(ele){
-
-var box=document.createElement("div");
-
-
-
-var image=document.createElement("img")
-image.setAttribute("src",ele.image)
+ var container=document.getElementById("sidebar");
+ 
+ let display=(data)=>{
+     container.innerHTML=null;
+     
+     data.forEach(function(ele){
+         
+         var box=document.createElement("div");
+         
+         
+         
+         var image=document.createElement("img")
+         image.setAttribute("src",ele.image)
 image.setAttribute("id","imagee")
 var name=document.createElement("p")
 name.innerText=ele.name;
@@ -106,5 +106,5 @@ container.append(box)
 })
 
 }
-var userData=JSON.parse(localStorage.getItem("user"))
+var userData=JSON.parse(localStorage.getItem("user")) ||[]
 display(userData)
